@@ -83,6 +83,7 @@ public class FailPipelineSinkTest extends HydratorTestBase {
     String inputTable = "input_table";
     ETLStage source = new ETLStage("source", MockSource.getPlugin(inputTable));
     Map<String, String> map = new HashMap<>();
+    map.put("referenceName", "FailPipelineTest");
     ETLStage sink = new ETLStage("sink",
                                       new ETLPlugin("FailPipeline", BatchSink.PLUGIN_TYPE, map, null));
 

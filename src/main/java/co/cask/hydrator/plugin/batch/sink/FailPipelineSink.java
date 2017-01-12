@@ -24,8 +24,9 @@ import co.cask.cdap.api.data.batch.OutputFormatProvider;
 import co.cask.cdap.api.data.format.StructuredRecord;
 import co.cask.cdap.api.dataset.lib.KeyValue;
 import co.cask.cdap.etl.api.Emitter;
-import co.cask.cdap.etl.api.batch.BatchSink;
 import co.cask.cdap.etl.api.batch.BatchSinkContext;
+import co.cask.hydrator.common.ReferenceBatchSink;
+import co.cask.hydrator.common.ReferencePluginConfig;
 import org.apache.hadoop.mapreduce.lib.output.NullOutputFormat;
 
 import java.util.HashMap;
@@ -37,7 +38,11 @@ import java.util.Map;
 @Plugin(type = "batchsink")
 @Name("FailPipeline")
 @Description("Fails the pipeline if any record flows to this sink.")
-public class FailPipelineSink extends BatchSink<StructuredRecord, Void, Void> {
+public class FailPipelineSink extends ReferenceBatchSink<StructuredRecord, Void, Void> {
+
+  public FailPipelineSink(ReferencePluginConfig config) {
+    super(config);
+  }
 
   @Override
   public void prepareRun(BatchSinkContext context) throws Exception {
