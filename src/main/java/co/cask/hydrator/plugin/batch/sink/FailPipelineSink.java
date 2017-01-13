@@ -1,5 +1,5 @@
 /*
- * Copyright © 2016 Cask Data, Inc.
+ * Copyright © 2017 Cask Data, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -24,6 +24,7 @@ import co.cask.cdap.api.data.batch.OutputFormatProvider;
 import co.cask.cdap.api.data.format.StructuredRecord;
 import co.cask.cdap.api.dataset.lib.KeyValue;
 import co.cask.cdap.etl.api.Emitter;
+import co.cask.cdap.etl.api.batch.BatchSink;
 import co.cask.cdap.etl.api.batch.BatchSinkContext;
 import co.cask.hydrator.common.ReferenceBatchSink;
 import co.cask.hydrator.common.ReferencePluginConfig;
@@ -35,7 +36,7 @@ import java.util.Map;
 /**
  * CDAP Fail Pipeline batch Sink.
  */
-@Plugin(type = "batchsink")
+@Plugin(type = BatchSink.PLUGIN_TYPE)
 @Name("FailPipeline")
 @Description("Fails the pipeline if any record flows to this sink.")
 public class FailPipelineSink extends ReferenceBatchSink<StructuredRecord, Void, Void> {

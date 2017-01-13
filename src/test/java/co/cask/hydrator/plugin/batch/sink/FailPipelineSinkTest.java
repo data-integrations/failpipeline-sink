@@ -1,5 +1,5 @@
 /*
- * Copyright © 2016 Cask Data, Inc.
+ * Copyright © 2017 Cask Data, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -47,7 +47,7 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class FailPipelineSinkTest extends HydratorTestBase {
-  private static final ArtifactVersion CURRENT_VERSION = new ArtifactVersion("3.2.0");
+  private static final ArtifactVersion CURRENT_VERSION = new ArtifactVersion("4.0.0");
   private static final ArtifactId BATCH_APP_ARTIFACT_ID =
     NamespaceId.DEFAULT.artifact("data-pipeline", CURRENT_VERSION.getVersion());
 
@@ -64,7 +64,7 @@ public class FailPipelineSinkTest extends HydratorTestBase {
   private static final String SALARY = "salary";
   private static final String DESIGNATIONID = "designationid";
 
-  protected static final ArtifactSummary DATAPIPELINE_ARTIFACT = new ArtifactSummary("data-pipeline", "3.2.0");
+  protected static final ArtifactSummary DATAPIPELINE_ARTIFACT = new ArtifactSummary("data-pipeline", "4.0.0");
 
   @Before
   public void setUp() throws Exception {
