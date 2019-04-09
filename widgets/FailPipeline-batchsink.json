@@ -1,7 +1,8 @@
 {
   "metadata": {
-    "spec-version": "1.0"
+    "spec-version": "1.5"
   },
+  "display-name": "Fail Pipeline",
   "configuration-groups": [
     {
       "label": "FailPipeline Batch Sink Properties",
