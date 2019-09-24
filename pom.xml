@@ -67,7 +67,7 @@
     <main.basedir>${project.basedir}</main.basedir>
     <cdap.version>6.1.0-SNAPSHOT</cdap.version>
     <hadoop.version>2.3.0</hadoop.version>
-    <hydrator.version>2.2.0-SNAPSHOT</hydrator.version>
+    <hydrator.version>2.3.0-SNAPSHOT</hydrator.version>
     <guava.version>13.0.1</guava.version>
     <widgets.dir>widgets</widgets.dir>
     <docs.dir>docs</docs.dir>
@@ -139,8 +139,8 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.1</version>
         <configuration>
-          <source>1.7</source>
-          <target>1.7</target>
+          <source>1.8</source>
+          <target>1.8</target>
         </configuration>
       </plugin>
       <plugin>
