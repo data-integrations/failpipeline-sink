@@ -14,7 +14,7 @@
  * the License.
  */
 
-package io.cdap.plugin.batch.sink;
+package io.cdap.plugin.failpipeline.sink;
 
 import io.cdap.cdap.api.annotation.Description;
 import io.cdap.cdap.api.annotation.Name;

@@ -14,7 +14,7 @@
  * the License.
  */
 
-package io.cdap.plugin.batch.sink;
+package io.cdap.plugin.failpipeline.sink;
 
 
 import com.google.common.collect.ImmutableList;
