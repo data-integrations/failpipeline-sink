@@ -24,10 +24,10 @@ import io.cdap.cdap.api.data.batch.OutputFormatProvider;
 import io.cdap.cdap.api.data.format.StructuredRecord;
 import io.cdap.cdap.api.dataset.lib.KeyValue;
 import io.cdap.cdap.etl.api.Emitter;
+import io.cdap.cdap.etl.api.FailureCollector;
+import io.cdap.cdap.etl.api.PipelineConfigurer;
 import io.cdap.cdap.etl.api.batch.BatchSink;
 import io.cdap.cdap.etl.api.batch.BatchSinkContext;
-import io.cdap.plugin.common.ReferenceBatchSink;
-import io.cdap.plugin.common.ReferencePluginConfig;
 import org.apache.hadoop.mapreduce.lib.output.NullOutputFormat;
 
 import java.util.HashMap;
@@ -39,10 +39,19 @@ import java.util.Map;
 @Plugin(type = BatchSink.PLUGIN_TYPE)
 @Name("FailPipeline")
 @Description("Fails the pipeline if any record flows to this sink.")
-public class FailPipelineSink extends ReferenceBatchSink<StructuredRecord, Void, Void> {
+public class FailPipelineSink extends BatchSink<StructuredRecord, Void, Void> {
+  private final FailPipelineSinkConfig config;
 
-  public FailPipelineSink(ReferencePluginConfig config) {
-    super(config);
+  public FailPipelineSink(FailPipelineSinkConfig config) {
+    this.config = config;
+  }
+
+  @Override
+  public void configurePipeline(PipelineConfigurer pipelineConfigurer) {
+    super.configurePipeline(pipelineConfigurer);
+    FailureCollector collector = pipelineConfigurer.getStageConfigurer().getFailureCollector();
+    config.validate(collector);
+    collector.getOrThrowException();
   }
 
   @Override
