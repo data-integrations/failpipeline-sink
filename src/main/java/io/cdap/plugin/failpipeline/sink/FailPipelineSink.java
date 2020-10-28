@@ -1,5 +1,5 @@
 /*
- * Copyright © 2019 CDAP
+ * Copyright © 2019-2020 CDAP
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -55,13 +55,13 @@ public class FailPipelineSink extends BatchSink<StructuredRecord, Void, Void> {
   }
 
   @Override
-  public void prepareRun(BatchSinkContext context) throws Exception {
+  public void prepareRun(BatchSinkContext context) {
     context.addOutput(Output.of("failSink", new FailPipelineOutputFormatProvider()));
   }
 
   @Override
-  public void transform(StructuredRecord input, Emitter<KeyValue<Void, Void>> emitter) throws Exception {
-    throw new IllegalStateException("Recieved Error records. Failing the pipeline.");
+  public void transform(StructuredRecord input, Emitter<KeyValue<Void, Void>> emitter) {
+    throw new IllegalStateException("Received Error records. Failing the pipeline");
   }
 
   private static class FailPipelineOutputFormatProvider implements OutputFormatProvider {
